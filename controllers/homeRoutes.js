@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
             ],
             attributes: { exclude: ['password'] },
             
-            //order: [['name', 'ASC']],
+         
         });
         
         const posts = postData.map((post) => post.get({ plain: true }));

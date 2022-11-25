@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="/css/styling.css">
+<div class="container text-center">
+    <h1 id="navcolor"> Welcome Back, {{user.username}}</h1>
+</div>
+
+<div class="container form new-blog-post pt-3">
+    <div class="row w-75 mx-auto">
+        <h3 id="navcolor"> Generate a new Blog Post </h3>
+        <form class="form new-blog-form">
+            <div class="mb-3">
+                <h5 id="navcolor" for="post-title" class="form-label">Blog Title </h5>
+                <input type="text" class="form-control" id="post-title" placeholder="Next Viral Blog Post">
+            </div>
+            <div class="mb-3">
+                <h5 id="navcolor" for="post-title" class="form-label">Copy and Paste your blog post here</h5>
+                <textarea type="text" class="form-control" id="post-content" rows="4"></textarea>
+            </div>
+            <button id="headingstyling" class="btn btn-primary" type="submit">
+                Submit
+            </button>
+        </form>
+    </div>
+</div>
+
+
+<div class="p-4 container w-75">
+    <div id="past-posts" class="mb-3 pt-2">
+        <h3 id="navcolor"> Past Blog Posts </h3>
+        {{#if posts.length}}
+
+        {{#each posts as |post|}}
+        <div id="cardstyling" class="card w-100 post-list">
+            <div class="card-body">
+
+                <div class="row row-cols-md-2">
+                    <h5 id="navcolor" class="card-title ">{{post.title}}</h5>
+
+                    <div class="d-flex flex-row-reverse">
+                        <a data-id="{{post.id}}" id="navcolor" class="delete"> Delete </a>
+                        <div  class="px-4">
+                            <a id="navcolor" id="edit" href='/edit/{{post.id}}'> Edit </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <h6 id="mutedcolor" class="card-subtitle mb-2"> {{ format_date post.date_created}} </h6>
+                    <p id="navcolor"class="card-text">{{post.content}}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {{/each}}
+</div>
+{{/if}}
+</div>
+
+<script src="./js/editor.js"></script>

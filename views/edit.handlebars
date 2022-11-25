@@ -1,0 +1,22 @@
+<div class="container form new-blog-post pt-3">
+    <div class="row w-75 mx-auto">
+        <h3 id="navcolor"> Edit Your Post </h3>
+        <form class="form new-blog-form">
+            <input id="postId" type="hidden" value="{{post.id}}"/>
+            <div class="mb-3">
+                <h5 id="navcolor" class="form-label">Blog Name</h5>
+                <input type="text" class="form-control" id="post-title" value="{{post.title}}">
+            </div>
+            <div class="mb-3">
+                <h5 id="navcolor"  class="form-label">Edit your Post </h5>
+                <textarea type="text" class="form-control" id="post-content" rows="4">{{post.content}}</textarea>
+            </div>
+            <button id="headingstyling" class="btn btn-primary edit-button" type="submit">
+                Submit
+            </button>
+           
+        </form>
+    </div>
+</div>
+
+<script src="/js/editor.js"></script>

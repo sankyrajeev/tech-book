@@ -26,7 +26,7 @@ router.delete('/:id', withAuth, async (req, res) => {
         });
 
         if (!postData) {
-            res.status(404).json({ message: 'doesnt exist' });
+            res.status(404).json({ message: 'Does Not Exist' });
             return;
         }
 

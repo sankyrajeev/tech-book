@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
             ],
             attributes: { exclude: ['password'] },
             
-         
+            //order: [['name', 'ASC']],
         });
         
         const posts = postData.map((post) => post.get({ plain: true }));
@@ -53,34 +53,37 @@ router.get('/post/:id', async (req, res) => {
     }
 });
 
-router.get('/dashboard', withAuth, async (req, res) => {
-    try {
-        const userData = await User.findByPk(req.session.user_id, {
-        });
+// router.get('/dashboard', withAuth, async (req, res) => {
+//     try {
+//         // Find the logged in user based on the session ID
+//         const userData = await User.findByPk(req.session.user_id, {
+//             // attributes: { exclude: ['password'] },
+//             // include: [{ model: Post }],
+//         });
 
-        const user = userData.get({ plain: true });
+//         const user = userData.get({ plain: true });
 
-        const postData = await Post.findAll({
-            where: { user_id: req.session.user_id },
+//         const postData = await Post.findAll({
+//             where: { user_id: req.session.user_id, },
 
-        },
-            {
-                include: [{ model: User }]
-            });
-        const posts = postData.map(post => {
-            return post.get({ plain: true })
-        });
-        console.log(posts);
+//         },
+//             {
+//                 include: [{ model: User }]
+//             });
+//         const posts = postData.map(post => {
+//             return post.get({ plain: true })
+//         });
+//         console.log(posts);
 
-        res.render('dashboard', {
-            user,
-            posts,
-            logged_in: true
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
+//         res.render('dashboard', {
+//             user,
+//             posts,
+//             logged_in: true
+//         });
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 
 router.get("/edit/:id", withAuth, async (req, res) =>  {
     try {

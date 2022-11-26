@@ -1,0 +1,31 @@
+#headingstyling {
+    background-color: #05386B; 
+}
+
+
+#color {
+    background-color: #5CDB95;
+    font-family: 'Play', sans-serif;
+}
+
+#cardstyling {
+    font-family: 'Play', sans-serif;
+    background-color: #EDF5E1;
+}
+
+#commentbutton {
+    margin-left: auto; 
+}
+
+#textcolor {
+    color: #EDF5E1
+}
+#navcolor {
+    text-decoration: none !important;
+    text-transform: none !important;
+    color:#05386B; 
+}
+
+#mutedcolor {
+    color: #379683
+}

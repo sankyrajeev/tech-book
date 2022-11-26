@@ -13,8 +13,9 @@ const editFormhandler = async (event) => {
                 'Content-Type': 'application/json'
             },
         });
-    
+      
             document.location.replace('/dashboard'); 
+        
 };
 
 document.querySelector('.new-blog-form').addEventListener('submit', editFormhandler);

@@ -6,7 +6,7 @@ const editFormhandler = async (event) => {
     const post_id = document.querySelector('#postId').value; 
     
 
-    await fetch(`/api/post/${postId}`, {
+    await fetch(`/api/post/${post_id}`, {
         method: 'PUT',
         body: JSON.stringify({
           title,

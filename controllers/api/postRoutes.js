@@ -38,18 +38,18 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-router.put('/:id',withAuth, async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     console.log('here'); 
     try {
         console.log(req.body); 
-        const editPost = await Post.update(
+        const [postData] = await Post.update(
           req.body,
              {
             where: {
                 id: req.params.id
             },
         });
-        if (editPost > 0) {
+        if (postData > 0) {
             res.status(200).end();
           } else {
             res.status(404).end();

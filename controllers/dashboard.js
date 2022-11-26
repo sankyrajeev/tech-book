@@ -10,7 +10,10 @@ router.get('/edit/:id', async (req, res) => {
       if (postData) {
         const post = postData.get({ plain: true });
   
-        res.render('edit');
+        res.render('edit',{
+          layout: 'main',
+   
+           post  });
       } else {
         res.status(404).end();
       }

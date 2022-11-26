@@ -13,7 +13,7 @@ const newFormHandler = async (event) => {
             }, 
         });
         if (response.ok) {
-            document.location.reload(); 
+            document.location.replace('/dashboard');
         }else {
             console.log(err)
         }
@@ -38,4 +38,4 @@ const delButtonHandler = async (event) => {
 
 document.querySelector('.new-blog-form').addEventListener('submit', newFormHandler);
 
-// document.querySelector('.delete').addEventListener('click', delButtonHandler);
+document.querySelector('.delete').addEventListener('click', delButtonHandler);

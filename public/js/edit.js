@@ -5,17 +5,18 @@ const editFormhandler = async (event) => {
     const content = document.querySelector('#post-content').value; 
     const post_id = document.querySelector('#postId').value; 
     console.log( title, content )
-   
-         await fetch(`/api/posts/${post_id}`, {
-            method: 'PUT', 
-            body: JSON.stringify({ title, content }), 
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        });
-      
-            document.location.replace('/dashboard'); 
-        
-};
+    if (event.target.hasAttribute('data-id')) {
+        const id = event.target.getAttribute('data-id'); 
 
-document.querySelector('.new-blog-form').addEventListener('submit', editFormhandler);
+        const response = await fetch(`/api/posts/${id}`, {
+            method: 'DELETE', 
+        });
+
+        if (response.ok) {
+            document.location.replace('/dashboard');
+        } else {
+            alert('Failed to delete'); 
+        }
+    }
+};
+document.querySelector('.edit').addEventListener('submit', editFormhandler);

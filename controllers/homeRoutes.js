@@ -19,10 +19,11 @@ router.get('/', async (req, res) => {
         
         const posts = postData.map((post) => post.get({ plain: true }));
         console.log( posts );
-        res.render('homepage', {
-            posts,
-            loggedIn: req.session.loggedIn,
-        });
+        res.json(posts)
+        // res.render('homepage', {
+        //     posts,
+        //     logged_in: req.session.logged_in,
+        // });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -53,7 +54,7 @@ router.get('/post/:id', async (req, res) => {
     }
 });
 
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard',  async (req, res) => {
     try {
         // Find the logged in user based on the session ID
         const userData = await User.findByPk(req.session.user_id, {
@@ -78,7 +79,7 @@ router.get('/dashboard', async (req, res) => {
         res.render('dashboard', {
             user,
             posts,
-            
+         
         });
     } catch (err) {
         res.status(500).json(err);
@@ -92,7 +93,7 @@ router.get("/edit/:id", withAuth, async (req, res) =>  {
         const post = postData.get({ plain: true })
         res.render('edit', {
             layout: 'main',
-            loggedIn: true,
+     
              post  });
     } catch (err) {
         res.status(500).json(err);

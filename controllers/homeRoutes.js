@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
         console.log( posts );
         res.render('homepage', {
             posts,
-            logged_in: req.session.logged_in,
+            loggedIn: req.session.loggedIn,
         });
     } catch (err) {
         res.status(500).json(err);
@@ -53,7 +53,7 @@ router.get('/post/:id', async (req, res) => {
     }
 });
 
-router.get('/dashboard', withAuth, async (req, res) => {
+router.get('/dashboard', async (req, res) => {
     try {
         // Find the logged in user based on the session ID
         const userData = await User.findByPk(req.session.user_id, {
@@ -78,7 +78,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
         res.render('dashboard', {
             user,
             posts,
-            logged_in: true
+            
         });
     } catch (err) {
         res.status(500).json(err);
@@ -92,7 +92,7 @@ router.get("/edit/:id", withAuth, async (req, res) =>  {
         const post = postData.get({ plain: true })
         res.render('edit', {
             layout: 'main',
-            logged_in: true,
+            loggedIn: true,
              post  });
     } catch (err) {
         res.status(500).json(err);
@@ -102,8 +102,8 @@ router.get("/edit/:id", withAuth, async (req, res) =>  {
 
 
 router.get('/login', async (req, res) => {
-    if (req.session.logged_in) {
-        res.redirect('/dashboard');
+    if (req.session.loggedIn) {
+        res.redirect('/');
         return;
     }
     res.render("login");

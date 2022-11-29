@@ -8,7 +8,10 @@ This is a project that was built using Express, SQl, Sequelize and Handlebars.js
 
 Use the link below to access the webpage. 
 
-https://git.heroku.com/my-tech-book.git
+https://my-tech-book.herokuapp.com/
+
+
+
 
 ## Usage
  

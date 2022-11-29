@@ -21,14 +21,16 @@
         <a class="nav-link" href="/dashboard"> My Dashboard</a>
       </li>
 
-      
+      {{#if loggedIn}}
       <li class="li-inline nav-item">
         <a class="nav-link" href="#" id="logout-link">Logout</a>
       </li>
+      {{else}}
 
       <li class="li-inline nav-item">
         <a class="nav-link" href="/login">Login</a>
       </li>
+      {{/if}}
 
 
     </ul>
